@@ -10,39 +10,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Employee {
+public class Employee extends Person{
 	@Id
 	@GeneratedValue
 	private long id;
-	private String firstName;
-	private String lastName;
 	private int managerFlag;
 	
 	public Employee() {
 		super();
 	}
 
-	
 	// default to only an employee
 	public Employee(String firstName, String lastName) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		super(firstName, lastName);
 		this.managerFlag = 0;
 	}
 
 	public Employee(String firstName, String lastName, int managerFlag) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		super(firstName, lastName);
 		this.setManagerFlag(managerFlag);
 	}
 
 	public Employee(long id, String firstName, String lastName, int managerFlag) {
-		super();
+		super(firstName, lastName);
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.setManagerFlag(managerFlag);
 	}
 
@@ -52,22 +43,6 @@ public class Employee {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public int getManagerFlag() {
@@ -88,7 +63,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", managerFlag="
+		return "Employee [id=" + id + ", firstName=" + super.getFirstName() + ", lastName=" + super.getLastName() + ", managerFlag="
 				+ managerFlag + "]";
 	}
 		
