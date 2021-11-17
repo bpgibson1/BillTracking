@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New or Edit Bill</title>
+</head>
+<body>
+
+	<form th:object="${newBill}" method=POST>
+	
+		Customer First Name: <input name="customer.firstName" size="20" th:field="*{customer.firstName}"><br />
+		Customer Last Name: <input name="customer.lastName" size="20" th:field="*{customer.lastName}"><br />
+		Customer Phone Number: <input placeholder="###-###-####" name="customer.contactNumber" size="20" th:field="*{customer.contactNumber}"><br />
+		Total Due: <input name="total" size="20" th:field="*{total}"><br />
+		Tax Rate: <input name="tax" placeholder="0.07" size="20" th:field="*{tax}"><br />
+		Due Date: <input name="dueDate" size="20" th:field="*{dueDate}"><br />
+		Bill Description: <input name="desc" size="20" th:field="*{desc}"><br />
+		Bill Activity: <input name="activity" placeholder="added by, updated by" size="20" th:field="*{activity}"><br />
+		
+		<input name="Submit" type="submit" value="submit" />
+	</form>
+	
+	<a href="../viewAll">View All Bills</a> <!-- should only return proper information for the person entering the bill i.e. employee or manager -->
+
+</body>
+</html>
