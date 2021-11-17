@@ -17,7 +17,7 @@ public class WebController {
 	//TODO create repo
 	
 	// should be used for testing, only the manager should see all results
-	@GetMapping("viewall")
+	@GetMapping("viewAll")
 	public String viewAllBills(Model model) {
 		
 		/*
