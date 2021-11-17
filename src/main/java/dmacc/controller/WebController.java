@@ -25,11 +25,11 @@ public class WebController {
 	@GetMapping("viewAll")
 	public String viewAllBills(Model model) {
 		
-		/*
-		 * if(repo.findAll().isEmpty()) { return loginScreen(model); }
-		 */
 		
-		//model.addAttribute("bills", repo.findAll());
+		if(repo.findAll().isEmpty()) { return loginScreen(model); }
+		 
+		
+		model.addAttribute("bills", repo.findAll());
 		return "Results";
 	}
 	
