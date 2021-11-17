@@ -7,16 +7,19 @@ package dmacc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import dmacc.beans.Bill;
+import dmacc.repository.BillRepository;
 
 @Controller
 public class WebController {
 	
 	@Autowired
-	//TODO create repo
+	BillRepository repo;
 	
 	// should be used for testing, only the manager should see all results
 	@GetMapping("viewAll")
@@ -27,7 +30,7 @@ public class WebController {
 		 */
 		
 		//model.addAttribute("bills", repo.findAll());
-		return "allResults";
+		return "Results";
 	}
 	
 	@GetMapping({"/", "loginScreen"})
@@ -44,5 +47,11 @@ public class WebController {
 		Bill b = new Bill();
 		model.addAttribute("newBill", b);
 		return "input";
+	}
+	
+	public String viewBillByEmployee(long id, Model model) {
+		
+		model.addAttribute("bills", repo.findByEmpId(id));
+		return "Results";
 	}
 }
