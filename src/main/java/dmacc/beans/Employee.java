@@ -5,9 +5,14 @@
  */
 package dmacc.beans;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Employee extends Person{
@@ -15,6 +20,9 @@ public class Employee extends Person{
 	@GeneratedValue
 	private long id;
 	private int managerFlag;
+	
+	@OneToMany(mappedBy = "bill", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Bill> bills;
 	
 	public Employee() {
 		super();
@@ -35,6 +43,16 @@ public class Employee extends Person{
 		super(firstName, lastName);
 		this.id = id;
 		this.setManagerFlag(managerFlag);
+	}
+	
+	public void addBill(Bill bill) {
+		this.bills.add(bill);
+		bill.setEmployee(this);
+	}
+	
+	public void removeBill(Bill bill) {
+		this.bills.remove(bill);
+		bill.setEmployee(null);
 	}
 
 	public long getId() {

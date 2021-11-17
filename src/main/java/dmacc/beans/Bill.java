@@ -6,8 +6,10 @@
 package dmacc.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Bill {
@@ -22,7 +24,17 @@ public class Bill {
 	//private Customer customer; customer will inherit from person
 	//date variable *** look at input page for further guidance on variable name ***
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Employee employee;
+	
 	//TODO: constructors
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	
 	public long getId() {
 		return id;
@@ -30,24 +42,28 @@ public class Bill {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	public String getActivity() {
 		return activity;
 	}
 	public void setActivity(String activity) {
 		this.activity = activity;
 	}
+	
 	public int getTotal() {
 		return total;
 	}
 	public void setTotal(int total) {
 		this.total = total;
 	}
+	
 	public float getTax() {
 		return tax;
 	}
 	public void setTax(float tax) {
 		this.tax = tax;
 	}
+	
 	public String getDesc() {
 		return desc;
 	}
