@@ -26,6 +26,7 @@ public class Bill {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
+	private long empId;
 	
 	//TODO: constructors
 	
@@ -34,6 +35,7 @@ public class Bill {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+		this.setEmpId(employee.getId());
 	}
 	
 	public long getId() {
@@ -69,6 +71,13 @@ public class Bill {
 	}
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public long getEmpId() {
+		return empId;
+	}
+	public void setEmpId(long empId) {
+		this.empId = empId;
 	}
 	
 }
