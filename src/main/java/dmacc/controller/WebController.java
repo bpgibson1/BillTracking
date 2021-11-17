@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import dmacc.beans.Bill;
+
 @Controller
 public class WebController {
 	
@@ -34,5 +36,13 @@ public class WebController {
 		//TODO: this will only display login screen with manager, employee, and customer links
 		
 		return "login";
+	}
+	
+	@GetMapping("/inputBill")
+	public String addNewBill(Model model) {
+		
+		Bill b = new Bill();
+		model.addAttribute("newBill", b);
+		return "input";
 	}
 }
