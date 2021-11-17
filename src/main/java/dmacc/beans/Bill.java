@@ -19,7 +19,8 @@ public class Bill {
 	private float tax;
 	private String desc;
 	private String activity;
-	//private Customer customer;
+	//private Customer customer; customer will inherit from person
+	//date variable *** look at input page for further guidance on variable name ***
 	
 	//TODO: constructors
 	
