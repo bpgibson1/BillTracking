@@ -53,6 +53,10 @@ public class Bill {
 		this.total = total;
 	}
 	
+	public Bill() {
+		
+	}
+	
 	public Employee getEmployee() {
 		return employee;
 	}
