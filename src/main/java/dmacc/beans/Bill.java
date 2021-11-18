@@ -29,6 +29,33 @@ public class Bill {
 	private long empId;
 	
 	//TODO: constructors
+	public Bill(long id, int total, float tax, String desc, String activity) {
+		this.id = id;
+		this.total = total;
+		this.tax = tax;
+		this.desc = desc;
+		this.activity = activity;
+	}
+	
+	public Bill(int total, float tax, String desc, String activity) {
+		this.total = total;
+		this.tax = tax;
+		this.desc = desc;
+		this.activity = activity;
+	}
+	
+	public Bill(int total, float tax) {
+		this.total = total;
+		this.tax = tax;
+	}
+	
+	public Bill(int total) {
+		this.total = total;
+	}
+	
+	public Bill() {
+		
+	}
 	
 	public Employee getEmployee() {
 		return employee;
