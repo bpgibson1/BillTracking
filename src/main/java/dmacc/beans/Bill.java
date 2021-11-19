@@ -31,6 +31,7 @@ public class Bill {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Customer customer;
 	
+	
 	//TODO: constructors
 	public Bill(long id, int total, float tax, String desc, String activity) {
 		this.id = id;
