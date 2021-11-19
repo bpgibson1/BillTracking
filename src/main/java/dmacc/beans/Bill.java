@@ -28,6 +28,9 @@ public class Bill {
 	private Employee employee;
 	private long empId;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Customer customer;
+	
 	//TODO: constructors
 	public Bill(long id, int total, float tax, String desc, String activity) {
 		this.id = id;
@@ -105,6 +108,14 @@ public class Bill {
 	}
 	public void setEmpId(long empId) {
 		this.empId = empId;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 }
