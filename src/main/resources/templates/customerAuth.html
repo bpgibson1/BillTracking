@@ -3,8 +3,42 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script type ="text/javascript">
+function validateForm(form){				//same as manager script almost, might be changed later to integrate database info
+	if(form.user.value == ""){
+		alert("error: field is empty");
+		form.type.focus();
+		return false;
+	}
+	if(form.pass.value == ""){
+		alert("error: field is empty");
+		form.type.focus();
+		return false;
+	}
+	if (form.user.value != "Jim"){
+		alert("Incorrect username");
+		form.user.focus();
+		return false
+	}
+	if(form.pass.value != "customerpassPLACEHOLDER"){
+		alert("Incorrect Password");
+		form.pass.focus();
+		return false;
+	}
+
+	//validation successful
+	return true;
+}
+
+
+
+</script>
 </head>
 <body>
+<form action = "../viewall" onsubmit = "return validateForm(this)">  
+Type: <input type = "text" name = "user">
+Pass: <input type = "text" name = "pass">
+</form>
 
 </body>
 </html>

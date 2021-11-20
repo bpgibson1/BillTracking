@@ -3,10 +3,44 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script type ="text/javascript">
+function validateForm(form){				//This is the way it is since there's theoretically only one manager for the program, same thing for customerAuth but that might be changed later to integrate database info
+	if(form.user.value == ""){
+		alert("error: field is empty");
+		form.type.focus();
+		return false;
+	}
+	if(form.pass.value == ""){
+		alert("error: field is empty");
+		form.type.focus();
+		return false;
+	}
+	if (form.user.value != "admin"){
+		alert("Incorrect username");
+		form.user.focus();
+		return false
+	}
+	if(form.pass.value != "admin19901"){
+		alert("Incorrect Password");
+		form.pass.focus();
+		return false;
+	}
+
+	//validation successful
+	return true;
+}
+
+
+
+</script>
+
 </head>
 <body>
-
-
-<a href="../viewAll">View All Bills</a> <!-- should only return proper information for the person entering the bill i.e. employee or manager -->
+<form action = "../viewall" onsubmit = "return validateForm(this)">  
+Type: <input type = "text" name = "user">
+Pass: <input type = "text" name = "pass">
+</form>
+<!--  Note that this isnt linked to any part of the program yet, need further coordination to ensure everything works properly -->
+<a href="../viewAll">View All Bills</a> <!-- should only return proper information for the person entering the bill i.e. employee or manager (In this case, since this is manager login, all bills shown) -->
 </body>
 </html>
