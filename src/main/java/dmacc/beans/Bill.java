@@ -21,6 +21,7 @@ public class Bill {
 	private float tax;
 	private String desc;
 	private String activity;
+	private int paid = 0;
 	//private Customer customer; customer will inherit from person
 	//date variable *** look at input page for further guidance on variable name ***
 	
@@ -30,6 +31,7 @@ public class Bill {
 	
 	//TODO: constructors
 	public Bill(long id, int total, float tax, String desc, String activity) {
+		super();
 		this.id = id;
 		this.total = total;
 		this.tax = tax;
@@ -38,6 +40,7 @@ public class Bill {
 	}
 	
 	public Bill(int total, float tax, String desc, String activity) {
+		super();
 		this.total = total;
 		this.tax = tax;
 		this.desc = desc;
@@ -45,8 +48,10 @@ public class Bill {
 	}
 	
 	public Bill(int total, float tax) {
+		super();
 		this.total = total;
 		this.tax = tax;
+		this.paid = 0;
 	}
 	
 	public Bill(int total) {
@@ -54,7 +59,7 @@ public class Bill {
 	}
 	
 	public Bill() {
-		
+		super();
 	}
 	
 	public Employee getEmployee() {
@@ -105,6 +110,14 @@ public class Bill {
 	}
 	public void setEmpId(long empId) {
 		this.empId = empId;
+	}
+
+	public int getPaid() {
+		return paid;
+	}
+
+	public void setPaid(int paid) {
+		this.paid = paid;
 	}
 	
 }

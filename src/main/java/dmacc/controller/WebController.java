@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import dmacc.beans.Bill;
 import dmacc.repository.BillRepository;
@@ -49,9 +50,18 @@ public class WebController {
 		return "input";
 	}
 	
+	@GetMapping("/paybill/{id}")
+	public void payBill(@PathVariable("billId") long billId, Model model) {
+		
+		Bill b = repo.findById(billId).orElse(null);
+		b.setPaid(1);
+		this.viewAllBills(model);
+	}
+	
 	public String viewBillByEmployee(long id, Model model) {
 		
 		model.addAttribute("bills", repo.findByEmpId(id));
 		return "Results";
 	}
+	
 }
