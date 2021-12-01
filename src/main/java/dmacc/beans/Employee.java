@@ -21,7 +21,7 @@ public class Employee extends Person{
 	private long id;
 	private int managerFlag;
 	
-	@OneToMany(mappedBy = "bill", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "Bill", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Bill> bills;
 	
 	public Employee() {
