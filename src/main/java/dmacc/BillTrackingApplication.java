@@ -20,19 +20,19 @@ public class BillTrackingApplication {
 		SpringApplication.run(BillTrackingApplication.class, args);
 	}
 	
-	@Autowired
-	BillRepository repo;
-
-	public void run(String... args) throws Exception {
-		
-	ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
-	
-		List<Bill> allBills = repo.findAll();
-		//list all bills
-		for(Bill bills: allBills) {
-			System.out.println(bills.toString());
-		}
-		
-	((AbstractApplicationContext) appContext).close();
-	}
+//	@Autowired
+//	BillRepository repo;
+//
+//	public void run(String... args) throws Exception {
+//		
+//	ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+//	
+//		List<Bill> allBills = repo.findAll();
+//		//list all bills
+//		for(Bill bills: allBills) {
+//			System.out.println(bills.toString());
+//		}
+//		
+//	((AbstractApplicationContext) appContext).close();
+//	}
 }
