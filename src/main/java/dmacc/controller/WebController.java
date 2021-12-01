@@ -42,6 +42,22 @@ public class WebController {
 		return "login";
 	}
 	
+	@GetMapping("/customerAuth")
+	public String loginCustomer(Model model) {
+		
+		//TODO: this will only display login screen with manager, employee, and customer links
+		
+		return "customerAuth";
+	}
+	
+	@GetMapping("/managerAuth")
+	public String loginManager(Model model) {
+		
+		//TODO: this will only display login screen with manager, employee, and customer links
+		
+		return "customerAuth";
+	}
+	
 	@GetMapping("/inputBill")
 	public String addNewBill(Model model) {
 		
@@ -60,7 +76,7 @@ public class WebController {
 	
 	public String viewBillByEmployee(long id, Model model) {
 		
-		model.addAttribute("bills", repo.findByEmpId(id));
+		model.addAttribute("bills", repo.findById(id));
 		return "results";
 	}
 	
