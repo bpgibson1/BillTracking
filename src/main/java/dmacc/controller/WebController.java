@@ -31,7 +31,7 @@ public class WebController {
 		 
 		
 		model.addAttribute("bills", repo.findAll());
-		return "Results";
+		return "results";
 	}
 	
 	@GetMapping({"/", "loginScreen"})
@@ -50,18 +50,18 @@ public class WebController {
 		return "input";
 	}
 	
-	@GetMapping("/paybill/{id}")
-	public void payBill(@PathVariable("billId") long billId, Model model) {
+	@GetMapping("/payBill/{id}")
+	public String payBill(@PathVariable("billId") long billId, Model model) {
 		
 		Bill b = repo.findById(billId).orElse(null);
 		b.setPaid(1);
-		this.viewAllBills(model);
+		return "cc_call";		
 	}
 	
 	public String viewBillByEmployee(long id, Model model) {
 		
 		model.addAttribute("bills", repo.findByEmpId(id));
-		return "Results";
+		return "results";
 	}
 	
 }
