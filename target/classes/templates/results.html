@@ -13,14 +13,9 @@
 		
 		<tr th:each="currentBill: ${bills}">
 		
-			<td th:text="${currentBill.customer.firstName}" />
-			<td th:text="${currentBill.customer.lastName}" />
-			<td th:text="${currentBill.customer.contactNumber}" />
 			<td th:text="${currentBill.total}" />
 			<td th:text="${currentBill.tax}" />
-			<td th:text="${currentBill.dueDate}" />
-			<td th:text="${currentBill.desc}" />
-			<td th:text="${currentBill.activity}" />
+			<td th:text="${currentBill.description}" />
 			
 			<td><a th:href="@{/payBill/{id}(id=${currentBill.id})}">Pay Bill</a></td>
 			<td><a th:href="@{/edit/{id}(id=${currentBill.id})}">Edit</a></td>
