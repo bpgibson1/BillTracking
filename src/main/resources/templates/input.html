@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<form th:object="${newBill}" method=POST>
+	<form th:object="${newBill}" th:action="@{inputBill}" method=POST>
 	
 		Customer First Name: <input name="customer.firstName" size="20" th:field="*{customer.firstName}"><br />
 		Customer Last Name: <input name="customer.lastName" size="20" th:field="*{customer.lastName}"><br />

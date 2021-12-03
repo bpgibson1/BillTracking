@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 import dmacc.beans.Bill;
 import dmacc.repository.BillRepository;
@@ -65,7 +68,34 @@ public class WebController {
 		model.addAttribute("newBill", b);
 		return "input";
 	}
+	//This will need fixed, problem with merge
+  
+	@PostMapping("/inputBill")
+	public String addNewBill(@ModelAttribute Bill b, Model model) {
+		repo.save(b);
+		return viewAllBills(model);
+	}
 	
+	@GetMapping("/edit/{id}") 
+	 public String updateBill(@PathVariable("id") long id, Model model) { 
+	  Bill b = repo.findById(id).orElse(null); 
+	  model.addAttribute("newBill", b); 
+	  return "input"; 
+	 }
+	
+	@PostMapping("/update/{id}") 
+	 public String reviseBill(Bill b, Model model) { 
+	  repo.save(b); 
+	  return viewAllBills(model); 
+	 }
+	
+	@GetMapping("/delete/{id}") 
+	 public String deleteUser(@PathVariable("id") long id, Model model) { 
+		Bill b = repo.findById(id).orElse(null); 
+		repo.delete(b); 
+		return viewAllBills(model);
+	}
+
 	@GetMapping("/payBill/{id}")
 	public String payBill(@PathVariable("billId") long billId, Model model) {
 		
