@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Bills</title>
+<script type ="text/javascript">
+	
+</script>
+</head>
+<body>
+	<form>
+		<table>
+		
+		<tr th:each="currentBill: ${bills}">
+		
+			<td th:text="${currentBill.total}" />
+			<td th:text="${currentBill.tax}" />
+			<td th:text="${currentBill.description}" />
+			
+			<td><a th:href="@{/payBill/{id}(id=${currentBill.id})}">Pay Bill</a></td>
+			<td><a th:href="@{/edit/{id}(id=${currentBill.id})}">Edit</a></td>
+			<td><a th:href="@{/delete/{id}(id=${currentBill.id})}">Delete</a></td>
+			
+		</tr>
+		
+		</table>
+	</form>
+	
+	<a href="../inputBill">Add New Bill</a>
+	
+</body>
+</html>
