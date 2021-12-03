@@ -77,6 +77,7 @@ public class WebController {
 		repo.delete(b); 
 		return viewAllBills(model);
 	}
+
 	
 	public String viewBillByEmployee(long id, Model model) {
 		
