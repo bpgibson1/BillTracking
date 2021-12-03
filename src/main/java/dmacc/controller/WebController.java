@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import dmacc.beans.Bill;
 import dmacc.repository.BillRepository;
@@ -47,6 +49,12 @@ public class WebController {
 		Bill b = new Bill();
 		model.addAttribute("newBill", b);
 		return "input";
+	}
+	
+	@PostMapping("/inputBill")
+	public String addNewBill(@ModelAttribute Bill b, Model model) {
+		repo.save(b);
+		return viewAllBills(model);
 	}
 	
 	public String viewBillByEmployee(long id, Model model) {
