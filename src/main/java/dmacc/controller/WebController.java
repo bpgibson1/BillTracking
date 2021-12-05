@@ -97,10 +97,11 @@ public class WebController {
 	}
 
 	@GetMapping("/payBill/{id}")
-	public String payBill(@PathVariable("billId") long billId, Model model) {
+	public String payBill(@PathVariable("id") long id, Model model) {
 		
-		Bill b = repo.findById(billId).orElse(null);
+		Bill b = repo.findById(id).orElse(null);
 		b.setPaid(1);
+		repo.save(b);
 		return "cc_call";		
 	}
 	

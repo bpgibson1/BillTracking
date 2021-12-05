@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 public class Bill {
 
@@ -22,7 +24,8 @@ public class Bill {
 	private String description;
 	private String activity;
 	private int paid = 0;
-	// private Customer customer; customer will inherit from person
+	@Autowired
+	private Customer customer;
 	// date variable *** look at input page for further guidance on variable name
 	// ***
 
@@ -126,6 +129,14 @@ public class Bill {
 
 	public void setPaid(int paid) {
 		this.paid = paid;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }
