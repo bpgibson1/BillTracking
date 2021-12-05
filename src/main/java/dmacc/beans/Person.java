@@ -5,7 +5,9 @@
  */
 package dmacc.beans;
 
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public class Person {
 
 	private String firstName;
