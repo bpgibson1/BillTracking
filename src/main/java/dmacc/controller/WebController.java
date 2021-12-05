@@ -42,7 +42,7 @@ public class WebController {
 		if(bills.isEmpty()) { return "allBillsPaid"; }
 		
 		model.addAttribute("bills", bills);
-		return "results";
+		return "customerResults";
 	}
 	
 	@GetMapping("viewAll")
