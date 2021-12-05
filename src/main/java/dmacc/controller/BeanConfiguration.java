@@ -38,10 +38,10 @@ public class BeanConfiguration {
 		return bean;
 	}
 	
-//	@Bean
-//	public Person person() {
-//		Person bean = new Person();
-//		
-//		return bean;
-//	}
+	@Bean
+	public Person person() {
+		Person bean = new Person();
+		
+		return bean;
+	}
 }
