@@ -8,6 +8,7 @@ package dmacc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,12 +27,31 @@ public class WebController {
 	BillRepository repo;
 	
 	// should be used for testing, only the manager should see all results
+	@GetMapping("viewAllCustomer")
+	public String viewAllCustomerBills(Model model) {
+		
+		
+		if(repo.findAll().isEmpty()) { return loginScreen(model); }
+		
+		List<Bill> bills = repo.findAll();
+		
+		for(int i = 0; i < bills.size(); ++i) {
+			
+			if( bills.get(i).getPaid() == 1) {
+				bills.remove(i);
+			}
+		}
+		 
+		
+		model.addAttribute("bills", bills);
+		return "results";
+	}
+	
 	@GetMapping("viewAll")
 	public String viewAllBills(Model model) {
 		
 		
 		if(repo.findAll().isEmpty()) { return loginScreen(model); }
-		 
 		
 		model.addAttribute("bills", repo.findAll());
 		return "results";
