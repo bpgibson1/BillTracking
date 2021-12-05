@@ -6,15 +6,13 @@
 package dmacc.controller;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import dmacc.beans.Bill;
 import dmacc.beans.Employee;
 import dmacc.beans.Person;
 
-/**
- * @author froda
- *
- */
+@Configuration
 public class BeanConfiguration {
 
 	
@@ -32,10 +30,10 @@ public class BeanConfiguration {
 		return bean;
 	}
 	
-	@Bean
-	public Person person() {
-		Person bean = new Person();
-		
-		return bean;
-	}
+//	@Bean
+//	public Person person() {
+//		Person bean = new Person();
+//		
+//		return bean;
+//	}
 }
