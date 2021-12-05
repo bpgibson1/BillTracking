@@ -30,9 +30,6 @@ public class WebController {
 	@GetMapping("viewAllCustomer")
 	public String viewAllCustomerBills(Model model) {
 		
-		
-		if(repo.findAll().isEmpty()) { return loginScreen(model); }
-		
 		List<Bill> bills = repo.findAll();
 		
 		for(int i = 0; i < bills.size(); ++i) {
@@ -41,7 +38,8 @@ public class WebController {
 				bills.remove(i);
 			}
 		}
-		 
+		
+		if(bills.isEmpty()) { return "allBillsPaid"; }
 		
 		model.addAttribute("bills", bills);
 		return "results";
@@ -51,7 +49,7 @@ public class WebController {
 	public String viewAllBills(Model model) {
 		
 		
-		if(repo.findAll().isEmpty()) { return loginScreen(model); }
+		if(repo.findAll().isEmpty()) { return addNewBill(model); }
 		
 		model.addAttribute("bills", repo.findAll());
 		return "results";
@@ -78,7 +76,7 @@ public class WebController {
 		
 		//TODO: this will only display login screen with manager, employee, and customer links
 		
-		return "customerAuth";
+		return "managerAuth";
 	}
 	
 	@GetMapping("/inputBill")
