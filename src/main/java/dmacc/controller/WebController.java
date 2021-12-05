@@ -70,11 +70,11 @@ public class WebController {
 	}
 	//This will need fixed, problem with merge
   
-	@PostMapping("/inputBill")
-	public String addNewBill(@ModelAttribute Bill b, Model model) {
-		repo.save(b);
-		return viewAllBills(model);
-	}
+//	@PostMapping("/inputBill")
+//	public String addNewBill(@ModelAttribute Bill b, Model model) {
+//		repo.save(b);
+//		return viewAllBills(model);
+//	}
 	
 	@GetMapping("/edit/{id}") 
 	 public String updateBill(@PathVariable("id") long id, Model model) { 
