@@ -24,6 +24,9 @@ public class Bill {
 	private String description;
 	private String activity;
 	private int paid = 0;
+	private int managerAprovalFlag = 0;
+	
+
 	@Autowired
 	private Customer customer;
 	// date variable *** look at input page for further guidance on variable name
@@ -138,5 +141,17 @@ public class Bill {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public int getManagerAprovalFlag() {
+		return managerAprovalFlag;
+	}
 
+	public void setManagerAprovalFlag() {
+		if(this.total > 100) {
+			this.managerAprovalFlag = 1;
+		}
+		else {
+			this.managerAprovalFlag = 0;
+		}
+	}
 }
