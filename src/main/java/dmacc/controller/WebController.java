@@ -55,6 +55,42 @@ public class WebController {
 		return "results";
 	}
 	
+	@GetMapping("viewAllUnpaid")
+	public String viewAllUnpaid(Model model) {
+		
+		List<Bill> bills = repo.findAll();
+		
+		for(int i = 0; i < bills.size(); ++i) {
+			
+			if( bills.get(i).getPaid() == 1) {
+				bills.remove(i);
+			}
+		}
+		
+		if(bills.isEmpty()) { return "managerMenu"; }
+		
+		model.addAttribute("bills", bills);
+		return "results";
+	}
+	
+	@GetMapping("viewManagerApproval")
+	public String viewAllBillsForManagerApproval(Model model) {
+		
+		List<Bill> bills = repo.findAll();
+		
+		for(int i = 0; i < bills.size(); ++i) {
+			
+			if( bills.get(i).getManagerAprovalFlag() == 1) {
+				bills.remove(i);
+			}
+		}
+		
+		if(bills.isEmpty()) { return "managerMenu"; }
+		
+		model.addAttribute("bills", bills);
+		return "results";
+	}
+	
 	@GetMapping({"/", "loginScreen"})
 	public String loginScreen(Model model) {
 		
@@ -79,6 +115,12 @@ public class WebController {
 		return "managerAuth";
 	}
 	
+	@GetMapping("/managerMenu")
+	public String managerMenu(Model model) {
+		
+		return "managerMenu";
+	}
+	
 	@GetMapping("/inputBill")
 	public String addNewBill(Model model) {
 		
@@ -96,15 +138,16 @@ public class WebController {
 	
 	@GetMapping("/edit/{id}") 
 	 public String updateBill(@PathVariable("id") long id, Model model) { 
-	  Bill b = repo.findById(id).orElse(null); 
-	  model.addAttribute("newBill", b); 
-	  return "input"; 
+		Bill b = repo.findById(id).orElse(null); 
+	  	model.addAttribute("newBill", b); 
+	  	return "input"; 
 	 }
 	
 	@PostMapping("/update/{id}") 
 	 public String reviseBill(Bill b, Model model) { 
-	  repo.save(b); 
-	  return viewAllBills(model); 
+		b.setManagerAprovalFlag();
+		repo.save(b); 
+		return viewAllBills(model); 
 	 }
 	
 	@GetMapping("/delete/{id}") 
