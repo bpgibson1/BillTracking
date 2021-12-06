@@ -24,7 +24,7 @@ public class Bill {
 	private String description;
 	private String activity;
 	private int paid = 0;
-	private int managerAprovalFlag = 0;
+	private int managerApprovalFlag = 0;
 	
 
 	@Autowired
@@ -142,16 +142,20 @@ public class Bill {
 		this.customer = customer;
 	}
 	
-	public int getManagerAprovalFlag() {
-		return managerAprovalFlag;
+	public int getManagerApprovalFlag() {
+		return managerApprovalFlag;
 	}
 
-	public void setManagerAprovalFlag() {
+	public void setManagerApprovalFlag() {
 		if(this.total > 100) {
-			this.managerAprovalFlag = 1;
+			this.managerApprovalFlag = 1;
 		}
 		else {
-			this.managerAprovalFlag = 0;
+			this.managerApprovalFlag = 0;
 		}
+	}
+	
+	public void setManagerApproved() {
+		this.managerApprovalFlag = 0;
 	}
 }
