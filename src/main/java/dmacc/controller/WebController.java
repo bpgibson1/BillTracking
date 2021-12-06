@@ -80,7 +80,7 @@ public class WebController {
 		
 		for(int i = 0; i < bills.size(); ++i) {
 			
-			if( bills.get(i).getManagerAprovalFlag() == 1) {
+			if( bills.get(i).getManagerApprovalFlag() == 0) {
 				bills.remove(i);
 			}
 		}
@@ -88,7 +88,7 @@ public class WebController {
 		if(bills.isEmpty()) { return "managerMenu"; }
 		
 		model.addAttribute("bills", bills);
-		return "results";
+		return "managerApproval";
 	}
 	
 	@GetMapping({"/", "loginScreen"})
@@ -145,7 +145,7 @@ public class WebController {
 	
 	@PostMapping("/update/{id}") 
 	 public String reviseBill(Bill b, Model model) { 
-		b.setManagerAprovalFlag();
+		b.setManagerApprovalFlag();
 		repo.save(b); 
 		return viewAllBills(model); 
 	 }
@@ -164,6 +164,16 @@ public class WebController {
 		b.setPaid(1);
 		repo.save(b);
 		return "cc_call";		
+	}
+	
+	@GetMapping("/approveBill/{id}")
+	public String approveBill(@PathVariable("id") long id, Model model) {
+		
+		Bill b = repo.findById(id).orElse(null);
+		b.setManagerApproved();
+		repo.save(b);
+		
+		return viewAllBillsForManagerApproval(model);
 	}
 	
 	public String viewBillByEmployee(long id, Model model) {
