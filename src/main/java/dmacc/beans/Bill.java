@@ -23,12 +23,9 @@ public class Bill {
 	private float tax;
 	private String description;
 	private String activity;
-<<<<<<< HEAD
-	private boolean billFlag;
 	//private Customer customer; customer will inherit from person
 	//date variable *** look at input page for further guidance on variable name ***
-	
-=======
+
 	private int paid = 0;
 	private int managerApprovalFlag = 0;
 	
@@ -38,7 +35,6 @@ public class Bill {
 	// date variable *** look at input page for further guidance on variable name
 	// ***
 
->>>>>>> 47f7e39272bffa8fa6d49c657047151dcb85c631
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
 	private long empId;
@@ -75,19 +71,8 @@ public class Bill {
 	public Bill() {
 		super();
 	}
-<<<<<<< HEAD
 	
-	public void setBillFlag() {
-		this.billFlag = billFlag;
-	}
-	
-	public boolean getBillFlag() {
-		return billFlag;
-	}
-	
-=======
 
->>>>>>> 47f7e39272bffa8fa6d49c657047151dcb85c631
 	public Employee getEmployee() {
 		return employee;
 	}
