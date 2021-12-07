@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Pay Bill</title>
+<script>
+
+	function validate_creditcard() {
+	    var re16digit = /^\d{16}$/;
+	    var re3digit = /^\d{3}$/;
+	    var re4digit = /^\d{4}$/;
+	    if (!re16digit.test(document.getElementById("ccn").value)) {
+	        alert("Please enter 16 digit credit card numbers");
+	        return false;
+	    }
+	    
+	    if (!re3digit.test(document.getElementById("cvv").value)) {
+	        alert("Please enter CVV code");
+	        return false;
+	    }
+	    
+	    if (!re4digit.test(document.getElementById("exp").value)) {
+	        alert("Please enter Expiration Date");
+	        return false;
+	    }
+	    
+	    return True;
+	}
+	
+</script>
+</head>
+<body>
+<form action = "../viewall" onsubmit="validate_creditcard()">  
+	Credit Card Number: <input type = "text" id="12345678910112">
+	CVV Code: <input type = "text" id="cvv" placeholder="111">
+	Expiration Date: <input type = "text" id="exp" placeholder="0121">
+	
+	<input type="submit" value="Submit">
+</form>
+</body>
+</html>

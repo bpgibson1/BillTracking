@@ -35,10 +35,12 @@ function validateForm(form){				//same as manager script almost, might be change
 </script>
 </head>
 <body>
-<form action = "../viewall" onsubmit = "return validateForm(this)">  
+<form action = "../viewAll" method=GET onsubmit = "return validateForm(this)">  
 Type: <input type = "text" name = "user">
 Pass: <input type = "text" name = "pass">
+<input type="submit" value="Submit">
 </form>
 
+<!-- there will need to be a submit button if the function is called on submit-->
 </body>
 </html>

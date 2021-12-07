@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 import dmacc.beans.Bill;
 import dmacc.repository.BillRepository;
 
@@ -33,7 +34,7 @@ public class WebController {
 		 
 		
 		model.addAttribute("bills", repo.findAll());
-		return "Results";
+		return "results";
 	}
 	
 	@GetMapping({"/", "loginScreen"})
@@ -44,6 +45,22 @@ public class WebController {
 		return "login";
 	}
 	
+	@GetMapping("/customerAuth")
+	public String loginCustomer(Model model) {
+		
+		//TODO: this will only display login screen with manager, employee, and customer links
+		
+		return "customerAuth";
+	}
+	
+	@GetMapping("/managerAuth")
+	public String loginManager(Model model) {
+		
+		//TODO: this will only display login screen with manager, employee, and customer links
+		
+		return "customerAuth";
+	}
+	
 	@GetMapping("/inputBill")
 	public String addNewBill(Model model) {
 		
@@ -51,7 +68,8 @@ public class WebController {
 		model.addAttribute("newBill", b);
 		return "input";
 	}
-	
+	//This will need fixed, problem with merge
+  
 	@PostMapping("/inputBill")
 	public String addNewBill(@ModelAttribute Bill b, Model model) {
 		repo.save(b);
@@ -78,10 +96,18 @@ public class WebController {
 		return viewAllBills(model);
 	}
 
+	@GetMapping("/payBill/{id}")
+	public String payBill(@PathVariable("billId") long billId, Model model) {
+		
+		Bill b = repo.findById(billId).orElse(null);
+		b.setPaid(1);
+		return "cc_call";		
+	}
 	
 	public String viewBillByEmployee(long id, Model model) {
 		
-		model.addAttribute("bills", repo.findByEmpId(id));
-		return "Results";
+		model.addAttribute("bills", repo.findById(id));
+		return "results";
 	}
+	
 }
