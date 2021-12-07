@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 public class Bill {
 
@@ -28,7 +30,11 @@ public class Bill {
 	
 =======
 	private int paid = 0;
-	// private Customer customer; customer will inherit from person
+	private int managerApprovalFlag = 0;
+	
+
+	@Autowired
+	private Customer customer;
 	// date variable *** look at input page for further guidance on variable name
 	// ***
 
@@ -147,4 +153,28 @@ public class Bill {
 		this.paid = paid;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public int getManagerApprovalFlag() {
+		return managerApprovalFlag;
+	}
+
+	public void setManagerApprovalFlag() {
+		if(this.total > 100) {
+			this.managerApprovalFlag = 1;
+		}
+		else {
+			this.managerApprovalFlag = 0;
+		}
+	}
+	
+	public void setManagerApproved() {
+		this.managerApprovalFlag = 0;
+	}
 }

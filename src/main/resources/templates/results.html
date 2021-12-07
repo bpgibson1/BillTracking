@@ -13,6 +13,8 @@
 		
 		<tr th:each="currentBill: ${bills}">
 		
+			<td th:text="${currentBill.customer.firstName}" />
+			<td th:text="${currentBill.customer.lastName}" />
 			<td th:text="${currentBill.total}" />
 			<td th:text="${currentBill.tax}" />
 			<td th:text="${currentBill.description}" />
@@ -25,8 +27,10 @@
 		
 		</table>
 	</form>
+	<br><br>
+	<input type="button" onclick="location.href='../managerMenu';" value="Manager Menu"/> <br>
+	<input type="button" onclick="location.href='../inputBill';" value="Add New Bill"/> 
 	
-	<a href="../inputBill">Add New Bill</a>
 	
 </body>
 </html>
