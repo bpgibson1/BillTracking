@@ -21,6 +21,7 @@ public class Bill {
 	private float tax;
 	private String desc;
 	private String activity;
+	private boolean billFlag;
 	//private Customer customer; customer will inherit from person
 	//date variable *** look at input page for further guidance on variable name ***
 	
@@ -55,6 +56,14 @@ public class Bill {
 	
 	public Bill() {
 		
+	}
+	
+	public void setBillFlag() {
+		this.billFlag = billFlag;
+	}
+	
+	public boolean getBillFlag() {
+		return billFlag;
 	}
 	
 	public Employee getEmployee() {
