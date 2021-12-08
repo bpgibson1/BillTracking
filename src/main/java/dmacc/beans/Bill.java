@@ -28,7 +28,6 @@ public class Bill {
 
 	private int paid = 0;
 	private int managerApprovalFlag = 0;
-	
 
 	@Autowired
 	private Customer customer;
@@ -37,9 +36,11 @@ public class Bill {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
-	private long empId;
+	
 
 	// TODO: constructors
+	
+	
 	public Bill(long id, int total, float tax, String description, String activity) {
 		super();
 		this.id = id;
@@ -79,7 +80,6 @@ public class Bill {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-		this.setEmpId(employee.getId());
 	}
 
 	public long getId() {
@@ -120,14 +120,6 @@ public class Bill {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public long getEmpId() {
-		return empId;
-	}
-
-	public void setEmpId(long empId) {
-		this.empId = empId;
 	}
 
 	public int getPaid() {

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Creation</title>
+</head>
+<body>
+
+	<form th:object="${newEmp}" th:action="@{/updateEmp/{id}(id=${newEmp.id})}" method=POST>
+		
+		First Name: <input name="firstName" size="20" th:field="*{firstName}"><br />
+		Last Name: <input name="lastName" size="20" th:field="*{lastName}"><br />
+		Manager Flag: <input name="managerFlag" size="20" th:field="*{managerFlag}"><br />
+		 
+		<input name="Submit" type="submit" value="submit" />
+	</form>
+	
+	<input type="button" onclick="location.href='../viewAllEmp';" value="View All Employees"/>  
+</body>
+</html>
