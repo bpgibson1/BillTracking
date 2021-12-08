@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 public class Bill {
 
@@ -22,15 +24,20 @@ public class Bill {
 	private String description;
 	private String activity;
 	private int paid = 0;
-	// private Customer customer; customer will inherit from person
+	private int managerApprovalFlag = 0;
+
+	@Autowired
+	private Customer customer;
 	// date variable *** look at input page for further guidance on variable name
 	// ***
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
-	private long empId;
+	
 
 	// TODO: constructors
+	
+	
 	public Bill(long id, int total, float tax, String description, String activity) {
 		super();
 		this.id = id;
@@ -69,7 +76,6 @@ public class Bill {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-		this.setEmpId(employee.getId());
 	}
 
 	public long getId() {
@@ -112,14 +118,6 @@ public class Bill {
 		this.description = description;
 	}
 
-	public long getEmpId() {
-		return empId;
-	}
-
-	public void setEmpId(long empId) {
-		this.empId = empId;
-	}
-
 	public int getPaid() {
 		return paid;
 	}
@@ -128,4 +126,28 @@ public class Bill {
 		this.paid = paid;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public int getManagerApprovalFlag() {
+		return managerApprovalFlag;
+	}
+
+	public void setManagerApprovalFlag() {
+		if(this.total > 100) {
+			this.managerApprovalFlag = 1;
+		}
+		else {
+			this.managerApprovalFlag = 0;
+		}
+	}
+	
+	public void setManagerApproved() {
+		this.managerApprovalFlag = 0;
+	}
 }

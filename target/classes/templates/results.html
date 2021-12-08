@@ -1,67 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-   <head>
-      <meta charset="UTF-8">
-      <title>View All Bills</title>
-   </head>
-   <style>
-      #customers {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-      }
-      #customers td, #customers th {
-      border: 1px solid #ddd;
-      padding: 8px;
-      }
-      #customers tr:nth-child(even){background-color: #f2f2f2;}
-      #customers tr:hover {background-color: #ddd;}
-      #customers th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #04AA6D;
-      color: white;
-      }
-   </style>
-   <body>
-      <h2>
-         <p th:text="${'Hi' + ' ' + customer.name}">Test</p>
-      </h2>
-      <a href = "/">Logout</a>
-      <h2>Your unpaid bills</h2>
-      <form>
-         <table id="customers">
-            <tr>
-               <th>Total</th>
-               <th>Tax</th>
-               <th>Description</th>
-               <th>Pay</th>
-            </tr>
-            <tr th:each="currentBill: ${unpaidBills}">
-               <td th:text="${currentBill.total}" />
-               <td th:text="${currentBill.tax}" />
-               <td th:text="${currentBill.description}" />
-               <td><a th:href="@{/payBill/{id}(id=${currentBill.id})}">Pay Bill</a></td>
-            </tr>
-         </table>
-      </form>
-      <h2>Your paid Bills history</h2>
-      <form>
-         <table id="customers">
-            <tr>
-               <th>Total</th>
-               <th>Tax</th>
-               <th>Description</th>
-               <th>Paid status</th>
-            </tr>
-            <tr th:each="currentBill: ${paidBills}">
-               <td th:text="${currentBill.total}" />
-               <td th:text="${currentBill.tax}" />
-               <td th:text="${currentBill.description}" />
-               <td th:text="${currentBill.paid}" />
-            </tr>
-         </table>
-      </form>
-   </body>
+<head>
+<meta charset="UTF-8">
+<title>Insert New or Edit Bill</title>
+</head>
+<body>
+
+	<form th:object="${newBill}" th:action="@{/update/{id}(id=${newBill.id})}" method=POST>
+		Employee ID: <input name="employee.id" size="20" th:field="*{employee.id}"><br /> 
+		Customer First Name: <input name="customer.firstName" size="20" th:field="*{customer.firstName}"><br />
+		Customer Last Name: <input name="customer.lastName" size="20" th:field="*{customer.lastName}"><br />
+		Customer Phone Number: <input placeholder="###-###-####" name="customer.contactNumber" size="20" th:field="*{customer.contactNumber}"><br />
+		Total Due: <input name="total" size="20" th:field="*{total}"><br />
+		Tax Rate: <input name="tax" placeholder="0.07" size="20" th:field="*{tax}"><br />
+		<!-- Due Date: <input name="dueDate" size="20" th:field="*{dueDate}"><br /> -->
+		Bill Description: <input name="description" size="20" th:field="*{description}"><br />
+		Bill Activity: <input name="activity" placeholder="added by, updated by" size="20" th:field="*{activity}"><br />
+		
+		<input name="Submit" type="submit" value="submit" />
+	</form>
+	<br>
+	<br>
+	<input type="button" onclick="location.href='../managerMenu';" value="Manager Menu"/> <br>
+	<input type="button" onclick="location.href='../viewAll';" value="View All Open Bills"/> <!-- should only return proper information for the person entering the bill i.e. employee or manager -->
+
+</body>
 </html>

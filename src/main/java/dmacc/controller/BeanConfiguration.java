@@ -6,15 +6,14 @@
 package dmacc.controller;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import dmacc.beans.Bill;
+import dmacc.beans.Customer;
 import dmacc.beans.Employee;
 import dmacc.beans.Person;
 
-/**
- * @author froda
- *
- */
+@Configuration
 public class BeanConfiguration {
 
 	
@@ -28,6 +27,13 @@ public class BeanConfiguration {
 	@Bean
 	public Employee employee() {
 		Employee bean = new Employee();
+		
+		return bean;
+	}
+	
+	@Bean
+	public Customer customer() {
+		Customer bean = new Customer();
 		
 		return bean;
 	}
