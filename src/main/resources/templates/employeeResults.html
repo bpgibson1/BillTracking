@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form>
+		<table>
+		
+		<tr th:each="currentEmp: ${employees}">
+		
+			<td th:text="${currentEmp.id}" />
+			<td th:text="${currentEmp.firstName}"/>
+			<td th:text="${currentEmp.lastName}"/>
+			
+			
+
+			
+		</tr>
+		
+		</table>
+	</form>
+	
+<input type="button" onclick="location.href='../loginScreen';" value="Login"/> <br>
+	<input type="button" onclick="location.href='../inputEmp';" value="Add New Employee"/>  
+</body>
+</html>
