@@ -6,23 +6,16 @@
 </head>
 <body>
 <form>
-		<table>
-		
+		<table>	
 		<tr th:each="currentEmp: ${employees}">
-		
 			<td th:text="${currentEmp.id}" />
 			<td th:text="${currentEmp.firstName}"/>
 			<td th:text="${currentEmp.lastName}"/>
-			
-			
-
-			
-		</tr>
-		
+		</tr>	
 		</table>
 	</form>
 	
 <input type="button" onclick="location.href='../loginScreen';" value="Login"/> <br>
-	<input type="button" onclick="location.href='../inputEmp';" value="Add New Employee"/>  
+<input type="button" onclick="location.href='../inputEmp';" value="Add New Employee"/>  
 </body>
 </html>
