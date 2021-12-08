@@ -6,16 +6,14 @@
 </head>
 <body>
 
-	<form th:object="${newBill}" method=POST>
+	<form action = "../savebill" method=POST>
 	
-		Customer First Name: <input name="customer.firstName" size="20" th:field="*{customer.firstName}"><br />
-		Customer Last Name: <input name="customer.lastName" size="20" th:field="*{customer.lastName}"><br />
-		Customer Phone Number: <input placeholder="###-###-####" name="customer.contactNumber" size="20" th:field="*{customer.contactNumber}"><br />
-		Total Due: <input name="total" size="20" th:field="*{total}"><br />
-		Tax Rate: <input name="tax" placeholder="0.07" size="20" th:field="*{tax}"><br />
-		Due Date: <input name="dueDate" size="20" th:field="*{dueDate}"><br />
-		Bill Description: <input name="desc" size="20" th:field="*{desc}"><br />
-		Bill Activity: <input name="activity" placeholder="added by, updated by" size="20" th:field="*{activity}"><br />
+		Customer Name: <input name="Name" size="20" ><br />
+		Customer Phone Number: <input placeholder="###-###-####" name="contactNumber" size="20" ><br />
+		Total Due: <input name="total" size="20" ><br />
+		Tax Rate: <input name="tax" placeholder="0.07" size="20" ><br />
+		Due Date: <input name="dueDate" size="20" ><br />
+		Bill Description: <input name="desc" size="20" ><br />
 		
 		<input name="Submit" type="submit" value="submit" />
 	</form>
