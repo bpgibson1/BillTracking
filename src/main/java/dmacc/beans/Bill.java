@@ -37,10 +37,6 @@ public class Bill {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
 	
-
-	// TODO: constructors
-	
-	
 	public Bill(long id, int total, float tax, String description, String activity) {
 		super();
 		this.id = id;
@@ -73,7 +69,6 @@ public class Bill {
 		super();
 	}
 	
-
 	public Employee getEmployee() {
 		return employee;
 	}

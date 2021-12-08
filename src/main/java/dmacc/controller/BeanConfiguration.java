@@ -16,32 +16,27 @@ import dmacc.beans.Person;
 @Configuration
 public class BeanConfiguration {
 
-	
 	@Bean
 	public Bill bill() {
 		Bill bean = new Bill();
-		
 		return bean;
 	}
 	
 	@Bean
 	public Employee employee() {
 		Employee bean = new Employee();
-		
 		return bean;
 	}
 	
 	@Bean
 	public Customer customer() {
 		Customer bean = new Customer();
-		
 		return bean;
 	}
 	
 	@Bean
 	public Person person() {
 		Person bean = new Person();
-		
 		return bean;
 	}
 }
