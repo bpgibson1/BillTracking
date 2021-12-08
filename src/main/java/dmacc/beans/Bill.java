@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
@@ -29,15 +28,11 @@ public class Bill {
 	@Autowired
 	private Customer customer;
 	// date variable *** look at input page for further guidance on variable name
-	// ***
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
 	
 
-	// TODO: constructors
-	
-	
 	public Bill(long id, int total, float tax, String description, String activity) {
 		super();
 		this.id = id;
