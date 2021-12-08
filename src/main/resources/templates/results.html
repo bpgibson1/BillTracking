@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>View All Bills</title>
-<script type ="text/javascript">
-	
-</script>
-</head>
-<body>
-	<form>
-		<table>
-		
-		<tr th:each="currentBill: ${bills}">
-		
-			<td th:text="${currentBill.total}" />
-			<td th:text="${currentBill.tax}" />
-			<td th:text="${currentBill.description}" />
-			
-			<td><a th:href="@{/payBill/{id}(id=${currentBill.id})}">Pay Bill</a></td>
-			<td><a th:href="@{/edit/{id}(id=${currentBill.id})}">Edit</a></td>
-			<td><a th:href="@{/delete/{id}(id=${currentBill.id})}">Delete</a></td>
-			
-		</tr>
-		
-		</table>
-	</form>
-	
-	<a href="../inputBill">Add New Bill</a>
-	
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <title>View All Bills</title>
+   </head>
+   <style>
+      #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+      #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      }
+      #customers tr:nth-child(even){background-color: #f2f2f2;}
+      #customers tr:hover {background-color: #ddd;}
+      #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+      }
+   </style>
+   <body>
+      <h2>
+         <p th:text="${'Hi' + ' ' + customer.name}">Test</p>
+      </h2>
+      <a href = "/">Logout</a>
+      <h2>Your unpaid bills</h2>
+      <form>
+         <table id="customers">
+            <tr>
+               <th>Total</th>
+               <th>Tax</th>
+               <th>Description</th>
+               <th>Pay</th>
+            </tr>
+            <tr th:each="currentBill: ${unpaidBills}">
+               <td th:text="${currentBill.total}" />
+               <td th:text="${currentBill.tax}" />
+               <td th:text="${currentBill.description}" />
+               <td><a th:href="@{/payBill/{id}(id=${currentBill.id})}">Pay Bill</a></td>
+            </tr>
+         </table>
+      </form>
+      <h2>Your paid Bills history</h2>
+      <form>
+         <table id="customers">
+            <tr>
+               <th>Total</th>
+               <th>Tax</th>
+               <th>Description</th>
+               <th>Paid status</th>
+            </tr>
+            <tr th:each="currentBill: ${paidBills}">
+               <td th:text="${currentBill.total}" />
+               <td th:text="${currentBill.tax}" />
+               <td th:text="${currentBill.description}" />
+               <td th:text="${currentBill.paid}" />
+            </tr>
+         </table>
+      </form>
+   </body>
 </html>
