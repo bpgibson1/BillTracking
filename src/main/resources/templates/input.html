@@ -7,7 +7,7 @@
 <body>
 
 	<form th:object="${newBill}" th:action="@{/update/{id}(id=${newBill.id})}" method=POST>
-	
+		Employee ID: <input name="employee.id" size="20" th:field="*{employee.id}"><br /> 
 		Customer First Name: <input name="customer.firstName" size="20" th:field="*{customer.firstName}"><br />
 		Customer Last Name: <input name="customer.lastName" size="20" th:field="*{customer.lastName}"><br />
 		Customer Phone Number: <input placeholder="###-###-####" name="customer.contactNumber" size="20" th:field="*{customer.contactNumber}"><br />
