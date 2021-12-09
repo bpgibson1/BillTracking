@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+<title>Manager Page</title>
+<style>
+      #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+      #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      }
+      #customers tr:nth-child(even){background-color: #f2f2f2;}
+      #customers tr:hover {background-color: #ddd;}
+      #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+      }
+   </style>
 </head>
 <body>
 
+ <h2>All unpaid bills</h2>
+ <a href = "../inputBill">Input bill</a> <a href = "../addcustomer">Add Customer</a>
+      <form>
+         <table id="customers">
+            <tr>
+               <th>Total</th>
+               <th>Tax</th>
+               <th>Description</th>
+               <th>Delete</th>
+            </tr>
+            <tr th:each="currentBill: ${bills}">
+               <td th:text="${currentBill.total}" />
+               <td th:text="${currentBill.tax}" />
+               <td th:text="${currentBill.description}" />
+               <td><a th:href="@{/deletebill/{id}(id=${currentBill.id})}">Delete Bill</a></td>
+            </tr>
+         </table>
+      </form>
+
 </body>
-</html>
