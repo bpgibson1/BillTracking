@@ -133,6 +133,7 @@ public class Bill {
 		return managerApprovalFlag;
 	}
 
+	//Manager flag used to tell employees and managers apart
 	public void setManagerApprovalFlag() {
 		if(this.total > 100) {
 			this.managerApprovalFlag = 1;
