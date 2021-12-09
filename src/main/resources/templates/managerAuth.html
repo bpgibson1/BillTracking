@@ -31,6 +31,8 @@ function validateForm(form){				//This is the way it is since there's theoretica
 	return true;
 }
 
+
+
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins');
@@ -348,7 +350,7 @@ input[type=password]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form action = "../managerMenu" method = Post onsubmit = "return validateForm(this)">
+    <form action = "../managerMenu" onsubmit = "return validateForm(this)">
       <input type="text" id="login" class="fadeIn second" name="userName" placeholder="login">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
