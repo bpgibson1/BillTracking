@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Customer</title>
 </head>
 <body>
+<form class="form-horizontal" action = "../saveCustomer" method = "POST">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add Customer</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Customer Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="name" type="text" placeholder="Name" class="form-control input-md">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Customer UserName</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="userName" type="text" placeholder="Name" class="form-control input-md">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Customer DOB</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="dateOfBirth" type="text" placeholder="dob" class="form-control input-md">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Customer Phone</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="phone" type="text" placeholder="phone" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="password" type="password" placeholder="password" class="form-control input-md">
+    
+  </div>
+</div>
+
+</fieldset>
+
+<input type = "Submit" value = "Submit">
+</form>
 
 </body>
-</html>

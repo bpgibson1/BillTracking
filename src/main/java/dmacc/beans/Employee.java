@@ -24,6 +24,10 @@ public class Employee extends Person{
 	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Bill> bills;
 	
+	private String userName;
+	
+	private String password;
+	
 	public Employee() {
 		super();
 	}
@@ -65,6 +69,31 @@ public class Employee extends Person{
 
 	public int getManagerFlag() {
 		return managerFlag;
+	}
+	
+
+	public List<Bill> getBills() {
+		return bills;
+	}
+
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setManagerFlag(int managerFlag) {

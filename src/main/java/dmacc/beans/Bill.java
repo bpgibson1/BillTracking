@@ -5,13 +5,13 @@
  */
 package dmacc.beans;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Bill {
@@ -24,34 +24,50 @@ public class Bill {
 	private String description;
 	private String activity;
 	private int paid = 0;
-	private int managerApprovalFlag = 0;
-
-	@Autowired
-	private Customer customer;
+	// private Customer customer; customer will inherit from person
 	// date variable *** look at input page for further guidance on variable name
 	// ***
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
+	private long empId;
+	private int approved;
+	private String dueDate;
+	private Date createdDate;
 	
 
-	// TODO: constructors
-	
-	
-	public Bill(long id, int total, float tax, String description, String activity) {
+	public Bill(long id, int total, float tax, String description, String activity, int paid, Employee employee,
+			long empId, int approved, String dueDate, Date createdDate) {
 		super();
 		this.id = id;
 		this.total = total;
 		this.tax = tax;
 		this.description = description;
 		this.activity = activity;
+		this.paid = paid;
+		this.employee = employee;
+		this.empId = empId;
+		this.approved = approved;
+		this.dueDate = dueDate;
+		this.createdDate = createdDate;
 	}
 
-	public Bill(int total, float tax, String description, String activity) {
+	// TODO: constructors
+	public Bill(long id, int total, float tax, String desc, String activity, int approved) {
+		super();
+		this.id = id;
+		this.total = total;
+		this.tax = tax;
+		this.description = desc;
+		this.activity = activity;
+		this.approved = approved;
+	}
+
+	public Bill(int total, float tax, String desc, String activity) {
 		super();
 		this.total = total;
 		this.tax = tax;
-		this.description = description;
+		this.description = desc;
 		this.activity = activity;
 	}
 
@@ -76,6 +92,7 @@ public class Bill {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+		this.setEmpId(employee.getId());
 	}
 
 	public long getId() {
@@ -118,6 +135,14 @@ public class Bill {
 		this.description = description;
 	}
 
+	public long getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(long empId) {
+		this.empId = empId;
+	}
+
 	public int getPaid() {
 		return paid;
 	}
@@ -126,28 +151,28 @@ public class Bill {
 		this.paid = paid;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public int getApproved() {
+		return approved;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	
-	public int getManagerApprovalFlag() {
-		return managerApprovalFlag;
+	public void setApproved(int approved) {
+		this.approved = approved;
 	}
 
-	public void setManagerApprovalFlag() {
-		if(this.total > 100) {
-			this.managerApprovalFlag = 1;
-		}
-		else {
-			this.managerApprovalFlag = 0;
-		}
+	public String getDueDate() {
+		return dueDate;
 	}
-	
-	public void setManagerApproved() {
-		this.managerApprovalFlag = 0;
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 }
