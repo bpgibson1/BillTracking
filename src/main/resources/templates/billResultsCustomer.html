@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="style.css" rel="stylesheet">
+<meta charset="ISO-8859-1">
+<title>Customer Bill</title>
+</head>
+<body>
+<form> 
+<table> 
+<tr th:each="currentCustomer : ${Customer}" > 
+ <td th:text="${currentCustomer.id}" /> 
+    <td th:text="${currentCustomer.firstName}" /> 
+    <td th:text="${currentCustomer.lastName}" /> 
+    <td th:text="${currentCustomer.contactNumber}" /> 
+    <td th:text="${currentCustomer.Bill.total}" /> 
+    <td th:text="${currentCustomer.Bill.tax}" />
+    <td th:text="${currentCustomer.Bill.description}" />
+    <td th:text="${currentCustomer.Bill.activity}" />
+    <td><a th:href="@{/edit/{id}(id=${currentCustomer.id})}">Edit</a></td> 
+	<td><a th:href="@{/delete/{id}(id=${currentCustomer.Bill.total})}">Delete</a></td>
+</tr> 
+</table> 
+</form> 
+</body>
+</html>

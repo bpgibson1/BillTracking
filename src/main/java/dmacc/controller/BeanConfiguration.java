@@ -16,7 +16,6 @@ import dmacc.beans.Person;
 @Configuration
 public class BeanConfiguration {
 
-	
 	@Bean
 	public Bill bill() {
 		Bill bean = new Bill();

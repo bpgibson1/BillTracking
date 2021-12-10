@@ -165,6 +165,15 @@ public class Bill {
 
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
+    }
+	//Manager flag used to tell employees and managers apart
+	public void setManagerApprovalFlag() {
+		if(this.total > 100) {
+			this.managerApprovalFlag = 1;
+		}
+		else {
+			this.managerApprovalFlag = 0;
+		}
 	}
 
 	public Date getCreatedDate() {
